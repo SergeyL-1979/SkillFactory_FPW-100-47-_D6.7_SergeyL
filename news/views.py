@@ -137,11 +137,11 @@ class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, generic.Create
     #     return redirect_to_login(self.request.get_full_path(), self.get_login_url(), self.get_redirect_field_name())
 
     # ============== КОД ВОЗМОЖНОСТИ СОЗДОВАТЬ НЕСКОЛЬКО СТАТЕЙ В ДЕНЬ ===========================
-    def post1(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         """ Берем id пользователя который авторизован """
         user = Author.objects.get(author_user=self.request.user.id)
         " Получаем дату "
-        d_from = timezone.now().date()
+        d_from = timezone.now().date().today()
         d_to = d_from + timedelta(days=1)
         " Делаем фильтрацию по дате создания поста и по id авторизованного пользователя "
         posts = Post.objects.filter(create_date__range=(d_from, d_to), ).filter(post_author=user)
