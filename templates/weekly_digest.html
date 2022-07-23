@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for cats in category_object %}
+<h1 style="color:#0000ff">Дайджест новостей за прошедшую неделю в категории <q>{{ cats.category_name }}</q>!</h1>
+{% endfor %}
+<table>
+    {% for post in post_object %}
+    <tr>
+        <td>
+            <a href="http://127.0.0.1:8001/news/{{ post.id }}">{{ post.headline }}</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
