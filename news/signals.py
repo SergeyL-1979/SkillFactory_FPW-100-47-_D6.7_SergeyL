@@ -92,7 +92,7 @@ def send_emails(post_object, *args, **kwargs):
 
 def week_post_2():
     """ Функция отправки рассылки подписчикам за неделю """
-    week = timedelta(days=1)
+    week = timedelta(days=7)
     posts = Post.objects.all()
     past_week_posts = []
     template = 'weekly_digest.html'
